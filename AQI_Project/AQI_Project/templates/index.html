@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AQI Predictor</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    font-family:Segoe UI;
+}
+
+body{
+    height:100vh;
+    background: linear-gradient(135deg,#00c6ff,#0072ff);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    width:380px;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+h1{
+    margin-bottom:15px;
+    color:#0072ff;
+}
+
+input{
+    width:90%;
+    padding:12px;
+    margin:7px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+}
+
+button{
+    width:95%;
+    padding:13px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:#0072ff;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#005ad3;
+}
+
+.result{
+    margin-top:20px;
+    padding:15px;
+    border-radius:10px;
+    background:#f2f7ff;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌍 AQI Predictor</h1>
+<p>Enter Pollution Levels</p>
+
+<form action="/predict" method="post">
+<input name="PM2.5" placeholder="PM2.5">
+<input name="PM10" placeholder="PM10">
+<input name="NO2" placeholder="NO2">
+<input name="SO2" placeholder="SO2">
+<input name="CO" placeholder="CO">
+<input name="O3" placeholder="O3">
+
+<button type="submit">Predict AQI</button>
+</form>
+
+{% if result %}
+<div class="result">
+    <h2>AQI : {{ result }}</h2>
+    <h3>Status : {{ category }}</h3>
+</div>
+{% endif %}
+
+</div>
+
+</body>
+</html>
